@@ -7,20 +7,15 @@ export interface FetchApiOptions extends RequestInit {
 export async function fetcher<T>(
   endpoint: string,
   method: string = "GET",
-  { data, headers = {}, ...rest }: FetchApiOptions = {},
+  { data, headers = {}, ...rest }: FetchApiOptions = {}
 ) {
-  const isFormData =
-    typeof FormData !== "undefined" && data instanceof FormData;
-  const customContentType = Object.keys(headers).some(
-    (key) => key.toLowerCase() === "content-type",
-  );
+  const isFormData = typeof FormData !== "undefined" && data instanceof FormData;
+  const customContentType = Object.keys(headers).some((key) => key.toLowerCase() === "content-type");
 
   const config: RequestInit = {
     method,
     headers: {
-      ...(isFormData || customContentType
-        ? headers
-        : { "Content-Type": "application/json", ...headers }),
+      ...(isFormData || customContentType ? headers : { "Content-Type": "application/json", ...headers }),
     },
     body: data ? (isFormData ? data : JSON.stringify(data)) : undefined,
     ...rest,

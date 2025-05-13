@@ -1,10 +1,10 @@
-// export const API_URL = process.env.NEXT_PUBLIC_API_URL;
+export const API_URL = "someAPI";
 
-// if (!API_URL) {
-//   throw new Error("API base URL is not defined in .env");
-// }
+if (!API_URL) {
+  throw new Error("API base URL is not defined in .env");
+}
 
-// export const API_URL_LOCAL = "http://localhost:3000/api";
+export const API_URL_LOCAL = "http://localhost:3000/api";
 
 export const COMPANY_NAME = "Duy Vu Ink";
 export const COMPANY_DESCRIPTION = `
